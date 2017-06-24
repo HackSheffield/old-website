@@ -1,0 +1,5 @@
+# hacksheffield.co
+
+## Things to note when developing the new website
+
+- `/qrcode` is the URL that the business card QR code goes to, so make sure it works!
