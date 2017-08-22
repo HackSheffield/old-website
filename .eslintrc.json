@@ -1,0 +1,22 @@
+{
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2017
+  },
+  "root": true,
+  "extends": "standard",
+  "rules": {
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+    "no-unused-vars": [
+      "warn", {
+        "vars": "all",
+        "args": "none"
+      }
+    ]
+  }
+}
