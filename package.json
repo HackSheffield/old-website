@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node server.js",
+    "start:dev": "nodemon -d 2 -e js,ejs,pug,sass,scss,css -w app.js -w server.js -w dist -w routes server.js",
     "precommit": "lint-staged"
   },
   "dependencies": {
@@ -25,7 +26,8 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "husky": "^0.14.3",
-    "lint-staged": "^4.0.3"
+    "lint-staged": "^4.0.3",
+    "nodemon": "^1.11.0"
   },
   "lint-staged": {
     "!*.{js}": [
