@@ -12,7 +12,7 @@ const app = express();
 
 // view engine setup
 app.set('views', resolve('views'));
-app.set('view engine', 'ejs');
+app.set('view engine', 'pug');
 
 // middleware setup and use
 // uncomment after placing your favicon in /src
@@ -25,10 +25,8 @@ app.use(express.static(resolve('dist')));
 
 // load and set up routes
 const { router: index } = require('./routes/index');
-const { router: users } = require('./routes/users');
 
 app.use('/', index);
-app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
