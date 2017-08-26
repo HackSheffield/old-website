@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "start:dev": "nodemon -d 1 -e js,ejs,pug,sass,scss,css -w app.js -w server.js -w views -w routes server.js",
+    "start:dev": "DEBUG=hs:* nodemon -d 1 -e js,ejs,pug,sass,scss,css -w app.js -w server.js -w views -w routes server.js",
     "precommit": "lint-staged"
   },
   "dependencies": {
