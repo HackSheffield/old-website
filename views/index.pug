@@ -1,5 +1,437 @@
-extends layout.pug
+doctype html
+// Website maintained by HackSheffield Society at the University of Sheffield.
+html
+  head
+    title HackSheffield
 
-block content
-  h1= title
-  p Welcome to #{title}
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    //if lte IE 8
+      script(src='/scripts/ie/html5shiv.js')
+    link(rel='stylesheet', href='/styles/main.css')
+    //if lte IE 9
+      link(rel='stylesheet', href='/styles/ie9.css')
+    //if lte IE 8
+      link(rel='stylesheet', href='/styles/ie8.css')
+    meta(name='description', content="Sheffield's Major League Hacking hackathon in the University of Sheffield, open to students across the country!")
+    meta(name='author', content='HackSheffield')
+
+    // Open Graph
+    meta(property='og:url', content='https://hack.shef.ac.uk')
+    meta(property='og:title', content='HackSheffield')
+    meta(property='og:description', content="Sheffield's Major League Hacking hackathon in the University of Sheffield, open to students across the country!")
+    meta(property='og:image', content='https://hack.shef.ac.uk/images/share_image_20160804.jpg')
+
+    // Twitter Cards
+    meta(name='twitter:card', content='summary_large_image')
+    meta(name='twitter:site', content='@HackSheffield')
+    meta(name='twitter:title', content='HackSheffield')
+    meta(name='twitter:description', content="Sheffield's Major League Hacking hackathon in the University of Sheffield, open to students across the country!")
+    meta(name='twitter:image', content='https://hack.shef.ac.uk/images/share_image_20160804.jpg')
+
+  body
+    // Page Wrapper
+    #page-wrapper
+      // Header
+      header#header.alt
+        h1
+          a.smooth(href='#banner') HackSheffield
+        nav
+          a.only-medium(href='#menu') Menu
+          a.smooth.not-xsmall.not-small.not-medium(href='#about') About
+          a.smooth.not-xsmall.not-small.not-medium(href='#register') Register
+          a.smooth.not-xsmall.not-small.not-medium(href='#team') Team
+          a.smooth.not-xsmall.not-small.not-medium(href='#sponsor') Sponsors
+          a.smooth.not-xsmall.not-small.not-medium(href='#faq') FAQ
+          a.smooth.not-xsmall.not-small.not-medium(href='#footer') Contact
+          a#mlh-badge-spacer.not-xsmall.not-small.not-medium
+
+      // Menu
+      nav#menu
+        .inner
+          h2 Menu
+          ul.links
+            li
+              a.smooth(href='#about') About
+            li
+              a.smooth(href='#register') Register
+            li
+              a.smooth(href='#schedule') Schedule
+            li
+              a.smooth(href='#team') Team
+            li
+              a.smooth(href='#sponsor') Sponsors
+            li
+              a.smooth(href='#faq') FAQ
+            li
+              a.smooth(href='#footer') Contact
+          a.close(href='#') Close
+
+      // Banner
+      section#banner
+        video.fullscreen(autoplay='', loop='', muted='')
+          source(src='https://drive.google.com/uc?export=download&id=0Byaz8mKtbmG6cjJCS1RtNXdwN3c', type='video/webm')
+        .inner
+          h2.logo
+            img.fit(src='images/logos/hacksheffield/white.svg', alt='HackSheffield Hackathon')
+          p(style='font-size: 140%;')
+            strong
+              | 14
+              sup th
+              | -15
+              sup th
+              |  October 2017
+          p
+            a.button.special(href='http://hacksheffield2.devpost.com/', target='_blank') See last year's hacks!
+          p(style='opacity:40%; font-size: 50%;')
+            | Photo Credit:
+            a(href='https://www.facebook.com/AWardP/', target='_blank') Andrew Ward
+            |  &
+            a(href='https://mlh.io/', target='_blank') MLH
+            | ; Video Credit:
+            a(href='https://www.sortoffilms.co.uk/', target='_blank') Sort Of Films
+
+      // Wrapper
+      section#wrapper
+        // About Section
+        section#about.wrapper.style1.before-map
+          .inner
+            .content
+              h2.major About
+              .row
+                div(class='6u 12u(small) 12u(xsmall)')
+                  h3 Hackathon
+                  p
+                    | We're hosting the third installment of our Student Hackathon in the University of Sheffield, open to students across the country! We provide the WiFi, power, and food while teams of hackers create something new and exciting.
+                  h4 Venue
+                  p
+                    | This year, we're moving into a new home to cope with our new capacity. 38 Mappin Street is a newly reopened building nearby the Diamond with a much bigger capacity.
+                  a.special.smooth(href='#faq') Frequently Asked Questions
+                div(class='6u 12u(small) 12u(xsmall)')
+                  h3 Society
+                  p
+                    | As a team of 8, we organise HackSheffield. The society was founded in January 2016. Since then, we've held many events and look forward to organising further events within the university. We'd love to welcome you to our society, and maybe you could get involved!
+                  a.special(href='https://su.sheffield.ac.uk/groups/hacksheffield/join', target='_blank') Join The Society
+
+        // Map Section
+        section#map.wrapper
+          #map-div.map-fullwidth
+
+        // Register Section
+        section#register.wrapper.spotlight.style2.after-map
+          .inner
+            .content
+              h2.major Register
+              .row
+                div(class='6u 12u(xsmall)')
+                  h3 Ticket Information
+                  p
+                    | Our hackathons are free to enter! If you're over 18, and you're a student or have graduated in the past 12 months, you are welcome to attend! More information will be released soon.
+                div(class='6u 12u(xsmall)')
+                  h3 Ticket Rounds
+                  .table-wrapper
+                    table
+                      thead
+                        tr
+                          th Tickets
+                          th Date
+                          th Link
+                      tbody
+                        tr
+                          td Round 1
+                          td
+                            | 19:00, Wed
+                            span.not-medium nesday
+                            |  13th Sept
+                            span.not-large ember
+                            span.not-xlarge  2017
+                          td
+                            a(href='https://www.eventbrite.co.uk/e/hacksheffield-30-mlh-tickets-37479837202#tickets', target='_blank') Tickets
+                        tr
+                          td Round 2
+                          td TBA
+                          td
+                            em TBA
+                        tr
+                          td Round 3
+                          td TBA
+                          td
+                            em TBA
+
+        // Team Section
+        section#team.wrapper.alt.style1
+          .inner
+            h2.major The HackSheffield Team
+            section.special
+              .row
+                article(class='4u 12u(xsmall)')
+                  img.image.fit(src='images/team/borja.jpg', alt='Image of Borja')
+                  h3.major Borja Leyva
+                  span President
+                  ul.icons
+                    li
+                      a.icon.fa-envelope(href='mailto:borja@hacksheffield.co')
+                        span.label E-mail
+                    li
+                      a.icon.fa-globe(href='http://leyvaborja.com')
+                        span.label Website
+                    li
+                      a.icon.fa-github(href='https://github.com/P3rzival', target='_blank')
+                        span.label Github
+                article(class='4u 12u(xsmall)')
+                  img.image.fit(src='images/team/sanzi.jpg', alt='Image of Sanziana')
+                  h3.major Sanziana Chiorescu
+                  span Secretary
+                  ul.icons
+                    li
+                      a.icon.fa-envelope(href='mailto:sanziana@hacksheffield.co')
+                        span.label E-mail
+                    li
+                      a.icon.fa-twitter(href='https://twitter.com/SanzianaCh', target='_blank')
+                        span.label Twitter
+                    li
+                      a.icon.fa-github(href='https://github.com/SanzianaCh', target='_blank')
+                        span.label Github
+                article(class='4u 12u(xsmall)')
+                  img.image.fit(src='images/team/danny.jpg', alt='Image of Danny')
+                  h3.major Danny Jones
+                  span Media and Publicity Officer
+                  ul.icons
+                    li
+                      a.icon.fa-envelope(href='mailto:danny@hacksheffield.co')
+                        span.label E-mail
+                    li
+                      a.icon.fa-globe(href='http://www.danielcarl.info')
+                        span.label Website
+                    li
+                      a.icon.fa-twitter(href='https://twitter.com/_dannycjones', target='_blank')
+                        span.label Twitter
+                    li
+                      a.icon.fa-github(href='https://github.com/dannycjones', target='_blank')
+                        span.label Github
+                article(class='4u 12u(xsmall)')
+                  img.image.fit(src='images/team/luana.jpg', alt='Image of Luana')
+                  h3.major Luana Riebel
+                  span Sponsorship Officer
+                  ul.icons
+                    li
+                      a.icon.fa-envelope(href='mailto:luana@hacksheffield.co')
+                        span.label E-mail
+                    li
+                      a.icon.fa-github(href='https://github.com/LLRiebel', target='_blank')
+                        span.label Github
+                article(class='4u 12u(xsmall)')
+                  img.image.fit(src='images/team/will.jpg', alt='Image of Will')
+                  h3.major Will Humphreys
+                  span Inclusion Officer
+                  ul.icons
+                    li
+                      a.icon.fa-envelope(href='mailto:will@hacksheffield.co')
+                        span.label E-mail
+                    li
+                      a.icon.fa-twitter(href='https://twitter.com/wispeh_', target='_blank')
+                        span.label Twitter
+                    li
+                      a.icon.fa-github(href='https://github.com/TheWispy', target='_blank')
+                        span.label Github
+                article(class='4u 12u(xsmall)')
+                  img.image.fit(src='images/team/rob.jpg', alt='Image of Rob')
+                  h3.major Rob Ede
+                  span Media and Publicity Officer
+                  ul.icons
+                    li
+                      a.icon.fa-envelope(href='mailto:rob@hacksheffield.co')
+                        span.label E-mail
+                    li
+                      a.icon.fa-twitter(href='https://twitter.com/robjtede', target='_blank')
+                        span.label Twitter
+                    li
+                      a.icon.fa-github(href='https://github.com/robjtede', target='_blank')
+                        span.label Github
+                article(class='4u -2u -0u(xsmall) 12u(xsmall)')
+                  img.image.fit(src='images/team/ben.jpg', alt='Image of Ben')
+                  h3.major Ben Dixon
+                  span Treasurer
+                  ul.icons
+                    li
+                      a.icon.fa-envelope(href='mailto:ben@hacksheffield.co')
+                        span.label E-mail
+                    li
+                      a.icon.fa-github(href='https://github.com/Ben-Dixon1', target='_blank')
+                        span.label Github
+                article(class='4u -0u(xsmall) 12u(xsmall)')
+                  img.image.fit(src='images/team/greg.jpg', alt='Image of Greg')
+                  h3.major Greg Ives
+                  span Social Secretary
+                  ul.icons
+                    li
+                      a.icon.fa-envelope(href='mailto:greg@hacksheffield.co')
+                        span.label E-mail
+                    li
+                      a.icon.fa-github(href='https://github.com/gregives', target='_blank')
+                        span.label Github
+
+        // Sponsor Section
+        section#sponsor.wrapper.style-invert
+          .inner
+            .content
+              h2.major Sponsors
+              h3 Tera
+              .row
+                div(class='6u 8u$(small) -2u(small)')
+                  a.image-link(href='https://www.skybet.com/', target='_blank')
+                    img.fit(src='images/logos/sponsors/skybet/colour.png', alt='Sky Betting and Gaming Logo')
+              h3 Giga
+              .row
+                div(class='4u 6u(small)')
+                  a.image-link(href='https://www.ask4.com', target='_blank')
+                    img.fit(src='images/logos/sponsors/ask4/colour.png', alt='Ask4 Logo')
+                div(class='4u 6u(small)')
+                  a.image-link(href='http://www.chersoft.co.uk', target='_blank')
+                    img.fit(src='images/logos/sponsors/chersoft/color.png', alt='Chersoft Logo')
+              hr
+              a.special(href='mailto:sponsor@hacksheffield.co') Become a sponsor! E-mail us.
+              h2.major Partners
+              .row
+                div(class='4u -2u')
+                  img.fit(src='images/logos/partners/mlh/colour.svg', alt='Major League Hacking Logo')
+                div(class='4u')
+                  img.fit(src='images/logos/partners/uos/colour.png', alt='University of Sheffield Logo')
+
+        // FAQ Section
+        section#faq.wrapper.alt.style4
+          .inner
+            .content
+              h2.major Frequently Asked Questions
+              section.row
+                article(class='4u(large) 4u(xlarge) 6u(medium) 6u(small) 12u(xsmall)')
+                  h3 What is HackSheffield?
+                  p
+                    | It's a Hackathon in the University of Sheffield, open to students around the world! We provide WiFi, power, and food while you and your team create something new.
+                article(class='4u(large) 4u(xlarge) 6u$(medium) 6u$(small) 12u(xsmall)')
+                  h3 What's a 'Hackathon'?
+                  p
+                    | A Hackathon is a programming marathon, where teams of 2-4 put their ideas together to create something exciting in only 24 hours. It gives teams of hackers a chance to turn their ideas into reality.
+                article(class='4u$(large) 4u$(xlarge) 6u(medium) 6u(small) 12u(xsmall)')
+                  h3 Can I attend?
+                  p
+                    | To attend as a hacker, you need to be a university student or have left university in the past year. Apologies, but we are unable to accept under 18s.
+                article(class='4u(large) 4u(xlarge) 6u$(medium) 6u$(small) 12u(xsmall)')
+                  h3 Travel reimbursements?
+                  p TBC
+                article(class='4u(large) 4u(xlarge) 6u(medium) 6u(small) 12u(xsmall)')
+                  h3 What about sleep?
+                  p If you want to sleep, we should have some rooms where you can get some Z's.
+                article(class='4u$(large) 4u$(xlarge) 6u$(medium) 6u$(small) 12u(xsmall)')
+                  h3 What do I need to bring?
+                  p Your ticket, Student ID and a laptop with its charger. That's about it!
+                article(class='4u(large) 4u(xlarge) 6u(medium) 6u(small) 12u(xsmall)')
+                  h3 How do I register?
+                  p We usually release tickets in rounds. Check back later for more info!
+                article(class='4u(large) 4u(xlarge) 6u$(medium) 6u$(small) 12u(xsmall)')
+                  h3 Code of conduct?
+                  p
+                    | We follow the
+                    a(target='_blank', href='http://static.mlh.io/docs/mlh-code-of-conduct.pdf')  MLH Code of Conduct
+                    | .
+              a.special(href='mailto:team@hacksheffield.co') Unanswered questions? E-mail us!
+
+      // Footer
+      footer#footer.wrapper.style1
+        .inner
+          h2.major Stay in touch!
+          ul.actions.fit
+            li
+              a.button.special.fit(target='_blank', href='https://twitter.com/HackSheffield')
+                i.fa.fa-lg.fa-twitter
+                |
+                |
+                span.not-xsmall
+                  span.not-small.not-medium Follow Us on
+                  |
+                  | Twitter
+            li
+              a.button.special.fit(target='_blank', href='https://www.facebook.com/HackSheffield')
+                i.fa.fa-lg.fa-facebook
+                |
+                |
+                span.not-xsmall
+                  span.not-small.not-medium Like Us on
+                  |
+                  | Facebook
+            li
+              a.button.special.fit(target='_blank', href='http://slack.hacksheffield.co/')
+                i.fa.fa-lg.fa-slack
+                |
+                |
+                span.not-xsmall
+                  span.not-small.not-medium Join Us on
+                  |
+                  | Slack
+
+          ul.actions.fit
+            li
+              a.button.special.fit(href='mailto:team@hacksheffield.co')
+                i.fa.fa-lg.fa-envelope
+                |
+                |
+                span.not-xsmall
+                  span.not-small.not-medium Contact Us by
+                  |
+                  | Email
+            li
+              a.button.special.fit(target='_blank', href='https://medium.com/HackSheffield')
+                i.fa.fa-lg.fa-medium
+                |
+                |
+                span.not-xsmall
+                  span.not-small.not-medium Read articles on
+                  |
+                  | Medium
+            li
+              a.button.special.fit(target='_blank', href='http://eepurl.com/bRTYqT')
+                i.fa.fa-lg.fa-inbox
+                |
+                |
+                span.not-xsmall
+                  span.not-small.not-medium Join our
+                  |
+                  | Mailing List
+
+          p(style='text-align: center;')
+            strong See you in Autumn 2017!
+
+          ul.copyright
+            li © HackSheffield 2017. All rights reserved.
+            li
+              | Theme adapted from:
+              a(href='https://html5up.net/solid-state', target='_blank') Solid State
+
+    // Scripts
+    script(src='/scripts/skel.min.js')
+    script(src='/scripts/skel-layout.min.js')
+    script(src='/scripts/jquery.min.js')
+    script(src='/scripts/jquery.scrollex.min.js')
+    script(src='/scripts/util.js')
+    //if lte IE 8
+      script(src='/scripts/ie/respond.min.js')
+    script(src='/scripts/main.js')
+    script(src='/scripts/google-analytics.js')
+    script(src='/scripts/google-map.js')
+    script(src='//maps.googleapis.com/maps/api/js?key=AIzaSyBiO0BmcVW7u1GByrt3ZsYVpdu-TYlPZq8&libraries=places&callback=initMap', async='', defer='')
+
+    a#mlh-trust-badge(href='https://mlh.io/seasons/eu-2018/events?utm_source=eu-2018&utm_medium=TrustBadge&utm_campaign=eu-2018&utm_content=white', target='_blank')
+      img(src='https://s3.amazonaws.com/logged-assets/trust-badge/2018/white.svg', alt='Major League Hacking 2017 Hackathon Season', style='width:100%')
+
+    // Schema
+    script(type='application/ld+json').
+      {
+      "@context": "http://schema.org",
+      "@type": "Event",
+      "name": "HackSheffield 3.0",
+      "description": "Sheffield's third MLH hackathon in the University of Sheffield, open to students across the country!",
+      "offers": [],
+      "startDate": "2017-10-14T08:00Z",
+      "endDate": "2017-10-15T16:00Z",
+      "url": "https://hack.shef.ac.uk/"
+      }

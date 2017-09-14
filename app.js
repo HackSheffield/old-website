@@ -21,7 +21,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(resolve('dist')));
+app.use(express.static(resolve('src')));
 
 // load and set up routes
 const { router: index } = require('./routes/index');
