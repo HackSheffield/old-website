@@ -15,8 +15,6 @@ app.set('views', path.resolve('views'));
 app.set('view engine', 'pug');
 
 // middleware setup and use
-// uncomment after placing your favicon in /src
-// app.use(favicon(resolve('src', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
