@@ -1,5 +1,5 @@
 const express = require('express');
-const { resolve } = require('path');
+const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
@@ -11,7 +11,7 @@ const debug = require('debug')('hs:app');
 const app = express();
 
 // view engine setup
-app.set('views', resolve('views'));
+app.set('views', path.resolve('views'));
 app.set('view engine', 'pug');
 
 // middleware setup and use
@@ -21,7 +21,8 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(resolve('src')));
+app.use(express.static(path.resolve('src')));
+app.use(favicon(path.join(__dirname, 'src', 'images', 'favicon.ico')));
 
 // load and set up routes
 const { router: index } = require('./routes/index');
