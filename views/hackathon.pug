@@ -1,0 +1,29 @@
+doctype html
+// Website maintained by HackSheffield Society at the University of Sheffield.
+html
+  head
+    title
+      block title
+        | HackSheffield 3.0
+
+    include ./components/meta
+
+  body
+    // Page Wrapper
+    #page-wrapper
+      include ./components/header
+      include ./components/banner
+
+      // Wrapper
+      section#wrapper
+        include ./sections/about
+        include ./sections/map
+        //- include ./sections/register
+        //- include ./sections/schedule
+        include ./sections/team
+        include ./sections/sponsors
+        include ./sections/faq
+
+      include ./components/footer
+
+    include ./components/scripts

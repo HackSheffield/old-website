@@ -2,28 +2,232 @@ doctype html
 // Website maintained by HackSheffield Society at the University of Sheffield.
 html
   head
-    title
-      block title
-        | HackSheffield
+    title HackSheffield Society
+    link(rel='stylesheet' href='https://unpkg.com/flickity@2/dist/flickity.min.css')
 
     include ./components/meta
 
   body
     // Page Wrapper
     #page-wrapper
-      include ./components/header
-      include ./components/banner
+      header#header.alt
+        h1
+          a.smooth(href='#banner') HackSheffield
+        nav
+          a.only-medium(href='#menu') Menu
+          a.smooth.not-xsmall.not-small.not-medium(href='#about') About
+          a.smooth.not-xsmall.not-small.not-medium(href='#events') Events &amp; Trips
+          a.smooth.not-xsmall.not-small.not-medium(href="#community") Community
+          a.smooth.not-xsmall.not-small.not-medium(href='#team') Team
+          a.smooth.not-xsmall.not-small.not-medium(href='#footer') Connect
+
+      // Menu
+      nav#menu
+        .inner
+          h2 Menu
+          ul.links
+            li
+              a.smooth(href='#about') About
+            li
+              a.smooth(href='#events') Events &amp; Trips
+            li
+              a.smooth(href='#community') Community
+            li
+              a.smooth(href='#team') Team
+            li
+              a.smooth(href='#footer') Connect
+          a.close(href='#') Close
+
+      // Banner
+      section#banner
+        video.fullscreen(autoplay, loop, muted)
+          source(src='https://drive.google.com/uc?export=download&id=0Byaz8mKtbmG6cjJCS1RtNXdwN3c', type='video/webm')
+        .inner
+          h2.logo
+            img.fit(src='images/logos/hacksheffield/white.svg', alt='HackSheffield Hackathon')
+          p(style='font-size: 140%;')
+            strong.tagline
+          p
+            a.button.special(href='https://su.sheffield.ac.uk/groups/hacksheffield/join', target='_blank') Join the society!
+
 
       // Wrapper
       section#wrapper
-        include ./sections/about
-        include ./sections/map
-        //- include ./sections/register
-        //- include ./sections/schedule
-        include ./sections/team
-        include ./sections/sponsors
-        include ./sections/faq
+        // About Section
+        section#about.wrapper.style1
+          .inner
+            .content
+              h2.major About
+              p We're the #[a(href='#team') student-run] hackathon society at The University of Sheffield. We're here for all students of all courses, backgrounds, and experience. We go to hackathons, dabble with open source, run workshops, and support the student tech community in Sheffield.
+              a.special(href='https://su.sheffield.ac.uk/groups/hacksheffield/join', target='_blank') Join The Society
+      // Team Section
+      section#team.wrapper.style3.alt
+        .inner
+          h2.major The HackSheffield Team
+          section.special
+            .row
+              for member in team
+                article(class='4u 12u(xsmall)')
+                  img.image.fit(src=`images/team/${member.avatar}.jpg` alt='')
+                  h3.major= member.name
+                  span= member.role
+                  ul.icons
+                    - if ('email' in member.social)
+                      li
+                        a.icon.fa-envelope(href=`mailto:${member.social.email}` target="_blank")
+                          span.label E-mail
+                    - if ('website' in member.social)
+                      li
+                        a.icon.fa-globe(href=member.social.website target="_blank")
+                          span.label Website
+                    - if ('twitter' in member.social)
+                      li
+                        a.icon.fa-twitter(href=`https://twitter.com/${member.social.twitter}`, target='_blank')
+                          span.label Twitter
+                    - if ('github' in member.social)
+                      li
+                        a.icon.fa-github(href=`https://github.com/${member.social.github}`, target='_blank')
+                          span.label GitHub
+                    - if ('linkedin' in member.social)
+                      li
+                        a.icon.fa-linkedin(href=`https://www.linkedin.com/in/${member.social.linkedin}/`, target='_blank')
+                          span.label LinkedIn
 
-      include ./components/footer
+          section
+            .main-carousel(data-flickity='{ "wrapAround": true }')
+              .carousel-cell
+                article(class='4u 12u(xsmall)')
+                  img.image.fit(src='images/team/greg.jpg')
+                  h3.major Greg Ives
+                  span President
+                  ul.icons
+                    li
+                      a.icon.fa-envelope(href="mailto:greg@hacksheffield.co" target="_blank")
+                        span.label E-mail
+                    li
+                      a.icon.fa-github(href="https://github.com/gregives" target="_blank")
+                        span.label GitHub
+              .carousel-cell
+                article(class='4u 12u(xsmall)')
+                  img.image.fit(src='images/team/will.jpg')
+                  h3.major Greg Ives
+                  span President
+                  ul.icons
+                    li
+                      a.icon.fa-envelope(href="mailto:greg@hacksheffield.co" target="_blank")
+                        span.label E-mail
+                    li
+                      a.icon.fa-github(href="https://github.com/gregives" target="_blank")
+                        span.label GitHub
+              .carousel-cell
+                article(class='4u 12u(xsmall)')
+                  img.image.fit(src='images/team/luana.jpg')
+                  h3.major Greg Ives
+                  span President
+                  ul.icons
+                    li
+                      a.icon.fa-envelope(href="mailto:greg@hacksheffield.co" target="_blank")
+                        span.label E-mail
+                    li
+                      a.icon.fa-github(href="https://github.com/gregives" target="_blank")
+                        span.label GitHub
+              .carousel-cell
+                article(class='4u 12u(xsmall)')
+                  img.image.fit(src='images/team/danny.jpg')
+                  h3.major Greg Ives
+                  span President
+                  ul.icons
+                    li
+                      a.icon.fa-envelope(href="mailto:greg@hacksheffield.co" target="_blank")
+                        span.label E-mail
+                    li
+                      a.icon.fa-github(href="https://github.com/gregives" target="_blank")
+                        span.label GitHub
+
+
+
+
+      // Footer
+      footer#footer.wrapper.style1
+        .inner
+          h2.major Stay in touch!
+          ul.actions.fit
+            li
+              a.button.special.fit(target='_blank', href='https://twitter.com/HackSheffield')
+                i.fa.fa-lg.fa-twitter
+                |
+                |
+                span.not-xsmall
+                  span.not-small.not-medium Follow Us on
+                  |
+                  | Twitter
+            li
+              a.button.special.fit(target='_blank', href='https://www.facebook.com/HackSheffield')
+                i.fa.fa-lg.fa-facebook
+                |
+                |
+                span.not-xsmall
+                  span.not-small.not-medium Like Us on
+                  |
+                  | Facebook
+            li
+              a.button.special.fit(target='_blank', href='http://slack.hacksheffield.co/')
+                i.fa.fa-lg.fa-slack
+                |
+                |
+                span.not-xsmall
+                  span.not-small.not-medium Join Us on
+                  |
+                  | Slack
+
+          ul.actions.fit
+            li
+              a.button.special.fit(href='mailto:team@hacksheffield.co')
+                i.fa.fa-lg.fa-envelope
+                |
+                |
+                span.not-xsmall
+                  span.not-small.not-medium Contact Us by
+                  |
+                  | Email
+            li
+              a.button.special.fit(target='_blank', href='https://medium.com/HackSheffield')
+                i.fa.fa-lg.fa-medium
+                |
+                |
+                span.not-xsmall
+                  span.not-small.not-medium Read articles on
+                  |
+                  | Medium
+            li
+              a.button.special.fit(target='_blank', href='http://eepurl.com/bRTYqT')
+                i.fa.fa-lg.fa-inbox
+                |
+                |
+                span.not-xsmall
+                  span.not-small.not-medium Join our
+                  |
+                  | Mailing List
+
+          p(style='text-align: center;')
+            strong See you later this month!
+
+          ul.copyright
+            li © HackSheffield 2018. All rights reserved.
+            li
+              | Theme adapted from:
+              a(href='https://html5up.net/solid-state', target='_blank') Solid State
+
 
     include ./components/scripts
+    script(src='https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js')
+    script(src='https://cdn.jsdelivr.net/npm/typed.js@2.0.6/lib/typed.min.js')
+    script.
+      var typed = new Typed('.tagline', {
+        strings: ['We run workshops.', 'We go to hackathons.', 'We go to conferences.', 'We do open source.', 'We organise the HackSheffield hackathon.'],
+        typeSpeed: 50,
+        backDelay: 2000,
+        backSpeed: 20,
+        startDelay: 1000,
+        loop: true
+      });

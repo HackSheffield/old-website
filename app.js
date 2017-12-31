@@ -5,8 +5,10 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const postcssMiddleware = require('postcss-middleware');
-
 const debug = require('debug')('hs:app');
+
+// Local imports
+const router = require('./router.js');
 
 const app = express();
 
@@ -22,10 +24,7 @@ app.use(cookieParser());
 app.use(express.static(path.resolve('src')));
 app.use(favicon(path.join(__dirname, 'src', 'images', 'favicon.ico')));
 
-// load and set up routes
-const { router: index } = require('./routes/index');
-
-app.use('/', index);
+app.use('/', router);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
