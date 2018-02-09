@@ -1,32 +1,30 @@
-// Team Section
-section#team.wrapper.style1.alt
-  .inner
-    h2.major The HackSheffield Team
-    section.special
-      .row
-        for member in team
-          article(class='4u 12u(xsmall)')
-            img.image.fit(src=`images/team/${member.avatar}.jpg` alt='')
-            h3.major= member.name
-            span= member.role
-            ul.icons
-              - if ('email' in member.social)
-                li
-                  a.icon.fa-envelope(href=`mailto:${member.social.email}` target="_blank")
-                    span.label E-mail
-              - if ('website' in member.social)
-                li
-                  a.icon.fa-globe(href=member.social.website target="_blank")
-                    span.label Website
-              - if ('twitter' in member.social)
-                li
-                  a.icon.fa-twitter(href=`https://twitter.com/${member.social.twitter}`, target='_blank')
-                    span.label Twitter
-              - if ('github' in member.social)
-                li
-                  a.icon.fa-github(href=`https://github.com/${member.social.github}`, target='_blank')
-                    span.label GitHub
-              - if ('linkedin' in member.social)
-                li
-                  a.icon.fa-linkedin(href=`https://www.linkedin.com/in/${member.social.linkedin}/`, target='_blank')
-                    span.label LinkedIn
+each team in teams
+    unless teamBlacklist.includes(team.name)
+        section(id=team.name).wrapper.alt.style1
+            .inner
+                h2.major #{team.name}
+                section.special
+                    .row
+                        each member in team.members
+                            article(class='4u 12u(xsmall)')
+                                img.image.fit(src=`${member.avatarUrl}`, alt='Image of Borja')
+                                h3.major #{member.name || member.login}
+                                span #{people[member.login] ? people[member.login].role : "Member"}
+                                ul.icons
+                                    if member.email.length
+                                        li
+                                            a.icon.fa-envelope(href=`mailto:${member.email}`)
+                                                span.label E-mail
+                                    if member.websiteUrl
+                                        li
+                                            a.icon.fa-globe(href=`${member.websiteUrl.startsWith('http') ? '' : 'http://'}${member.websiteUrl}`)
+                                                span.label Website
+                                    if people[member.login]
+                                        if people[member.login].twitter
+                                            li
+                                                a.icon.fa-twitter(href=`https://twitter.com/${people[member.login].twitter}`)
+
+                                                    span.label Twitter
+                                    li
+                                        a.icon.fa-github(href=`${member.url}`, target='_blank')
+                                            span.label Github
