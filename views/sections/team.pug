@@ -8,7 +8,7 @@ each team in teams
                         each member in team.members
                             article(class='4u 12u(xsmall)')
                                 img.image.fit(src=`${member.avatarUrl}`, alt='Image of Borja')
-                                h3.major #{member.name || member.login}
+                                h3.major= member.name || member.login
                                 span #{people[member.login] ? people[member.login].role : "Member"}
                                 ul.icons
                                     if member.email.length
@@ -26,5 +26,5 @@ each team in teams
 
                                                     span.label Twitter
                                     li
-                                        a.icon.fa-github(href=`${member.url}`, target='_blank')
+                                        a.icon.fa-github(href=member.url, target='_blank')
                                             span.label Github
