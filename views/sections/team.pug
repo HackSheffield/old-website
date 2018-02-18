@@ -1,30 +1,11 @@
-each team in teams
-    unless teamBlacklist.includes(team.name)
-        section(id=team.name).wrapper.alt.style1
-            .inner
-                h2.major #{team.name}
-                section.special
-                    .row
-                        each member in team.members
-                            article(class='4u 12u(xsmall)')
-                                img.image.fit(src=`${member.avatarUrl}`, alt='Image of Borja')
-                                h3.major= member.name || member.login
-                                span #{people[member.login] ? people[member.login].role : "Member"}
-                                ul.icons
-                                    if member.email.length
-                                        li
-                                            a.icon.fa-envelope(href=`mailto:${member.email}`)
-                                                span.label E-mail
-                                    if member.websiteUrl
-                                        li
-                                            a.icon.fa-globe(href=`${member.websiteUrl.startsWith('http') ? '' : 'http://'}${member.websiteUrl}`)
-                                                span.label Website
-                                    if people[member.login]
-                                        if people[member.login].twitter
-                                            li
-                                                a.icon.fa-twitter(href=`https://twitter.com/${people[member.login].twitter}`)
+include ../_mixins
 
-                                                    span.label Twitter
-                                    li
-                                        a.icon.fa-github(href=member.url, target='_blank')
-                                            span.label Github
+section.wrapper.alt.style1
+  each team in teams
+    unless teamBlacklist.includes(team.name)
+      .inner
+        h2.major #{team.name}
+        section.special
+          .row
+            each member in team.members
+              +organiser(member)

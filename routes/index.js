@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const axios = require('axios');
 const YAML = require('yamljs');
+
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 if (!GITHUB_TOKEN) throw new Error('Supply GitHub token');
 
@@ -46,20 +47,38 @@ const graphql = `{
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  axios.post('https://api.github.com/graphql',
-    { query: graphql }, { headers: {'Authorization': `Bearer ${GITHUB_TOKEN}`} })
-    .then((graphqlRes) => {
-      const teams = graphqlRes.data.data.organization.teams.edges.map(edge => edge.node);
-      const people = YAML.parse(graphqlRes.data.data.organization.repository.object.text)
-        .reduce((people, person) => {
-          return { people, [person.github]: person };
-        }, {});
-      const teamBlacklist = JSON.parse(graphqlRes.data.data.organization.repository.object.repository.object.text);
+  axios
+    .post(
+      'https://api.github.com/graphql',
+      { query: graphql },
+      { headers: { Authorization: `Bearer ${GITHUB_TOKEN}` } }
+    )
+    .then(graphqlRes => {
+      const teams = graphqlRes.data.data.organization.teams.edges.map(
+        edge => edge.node
+      );
+      const people = YAML.parse(
+        graphqlRes.data.data.organization.repository.object.text
+      ).reduce((people, person) => {
+        return { ...people, [person.github]: person };
+      }, {});
+      console.log(people);
+      const teamBlacklist = JSON.parse(
+        graphqlRes.data.data.organization.repository.object.repository.object
+          .text
+      );
 
-      teams.forEach(team => team.members = team.members.edges.map(edge => edge.node));
-      res.render('index', { title: 'Teams', teams: teams, people, teamBlacklist });
+      teams.forEach(team => {
+        team.members = team.members.edges.map(edge => edge.node);
+      });
+      res.render('index', {
+        title: 'Teams',
+        teams: teams,
+        people,
+        teamBlacklist
+      });
     })
-    .catch((err) => {
+    .catch(err => {
       console.error(err);
       res.render('error', {});
     });
