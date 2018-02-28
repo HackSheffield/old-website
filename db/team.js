@@ -7,16 +7,16 @@
  Member object:
 
  {
-   name
-   avatar       // JPEG in /src/images/team/
-   role         // position on team
-   social: {
-     email
-     website
-     twitter
-     github
-     linkedin
-   }
+  name
+  avatar       // JPEG in /src/images/team/
+  role         // position on team
+  social: {
+    email
+    website
+    twitter
+    github
+    linkedin
+  }
  }
 
 */
@@ -80,18 +80,6 @@ module.exports = [
       email: 'rob@hacksheffield.co',
       twitter: 'robjtede',
       github: 'robjtede'
-    }
-  },
-  {
-    name: 'Matt Burman',
-    avatar: 'matt',
-    role: 'Organiser',
-    social: {
-      email: 'rob@hacksheffield.co',
-      website: 'http://www.mattburman.com',
-      twitter: '_mattburman',
-      github: 'mattburman',
-      linkedin: 'mattburman'
     }
   },
   {
