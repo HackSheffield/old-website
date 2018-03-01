@@ -24,22 +24,44 @@ router.get('/', (req, res) => {
       const teamBlacklist = JSON.parse(files.blacklist.text);
       const teamOrder = JSON.parse(files.order.text);
 
-      const people = YAML.parse(files.people.text).map(person => ({
+      const people = YAML.parse(files.people.text).reduce((people, person) => ({
+        ...people,
         [person.github]: person
-      }));
+      }), {});
 
       teams.forEach(team => {
+        // unwrap node
         team.members = team.members.edges.map(edge => edge.node);
+
+        // add role
+        team.members = team.members.map(member => ({
+          ...member,
+          role: member.login in people ? people[member.login].role : 'member',
+          twitter: member.login in people ? people[member.login].twitter : undefined
+        }));
+
+        // sort by roles
+        team.members.sort((a, b) => {
+          // a/b first word
+          const afw = a.role.split(' ').slice(0, 1)[0].toLowerCase();
+          const bfw = b.role.split(' ').slice(0, 1)[0].toLowerCase();
+
+          // a/b team order
+          const ato = teamOrder.includes(afw) ? teamOrder.indexOf(afw) : Infinity;
+          const bto = teamOrder.includes(bfw) ? teamOrder.indexOf(bfw) : Infinity;
+
+          return ato < bto ? -1 : 1;
+        });
       });
 
       res.render('index', {
         title: 'Teams',
-        teams: teams,
-        people,
+        teams,
         teamBlacklist,
         teamOrder
       });
-    }).catch((error) => {
+    })
+    .catch(error => {
       console.error(error);
       res.render('error', {
         error

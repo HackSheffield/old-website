@@ -2,13 +2,12 @@
 - const show = { committee: true, organisers: false, default: false }
 
 mixin organiser(member, teamName)
-  - console.log(teamName)
   article(class=sizes[teamName in sizes ? teamName : 'default'])
     img.image.fit(src=member.avatarUrl, alt=`Image of ${member.name || member.login}`)
     h3.major= member.name || member.login
 
     if show[teamName in show ? teamName : 'default']
-      span= people[member.login] ? people[member.login].role : 'Member'
+      span= member.role
 
     ul.icons
       if member.email.length
@@ -21,9 +20,9 @@ mixin organiser(member, teamName)
           a.icon.fa-globe(href=`${member.websiteUrl.startsWith('http') ? '' : 'http://'}${member.websiteUrl}`)
             span.label Website
 
-      if people[member.login] && people[member.login].twitter
+      if member.twitter
         li
-          a.icon.fa-twitter(href=`https://twitter.com/${people[member.login].twitter}`)
+          a.icon.fa-twitter(href=`https://twitter.com/${member.twitter}`)
             span.label Twitter
 
       li
