@@ -3690,3 +3690,10 @@ a#mlh-trust-badge {
   visibility: hidden;
   width: 125px;
 }
+
+.organisers h3 {
+  overflow: hidden;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
