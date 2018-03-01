@@ -1,23 +1,31 @@
-mixin organiser(member)
-  article(class='4u 12u(xsmall)')
+- const sizes = { committee: '4u 12u(xsmall)', organisers: '3u 6u(xsmall)', default: '3u 6u(xsmall)' }
+- const show = { committee: true, organisers: false, default: false }
+
+mixin organiser(member, teamName)
+  - console.log(teamName)
+  article(class=sizes[teamName in sizes ? teamName : 'default'])
     img.image.fit(src=member.avatarUrl, alt=`Image of ${member.name || member.login}`)
     h3.major= member.name || member.login
-    span= people[member.login] ? people[member.login].role : 'Member'
+
+    if show[teamName in show ? teamName : 'default']
+      span= people[member.login] ? people[member.login].role : 'Member'
+
     ul.icons
       if member.email.length
         li
           a.icon.fa-envelope(href=`mailto:${member.email}`)
             span.label E-mail
+
       if member.websiteUrl
         li
           a.icon.fa-globe(href=`${member.websiteUrl.startsWith('http') ? '' : 'http://'}${member.websiteUrl}`)
             span.label Website
-      if people[member.login]
-        if people[member.login].twitter
-          li
-            a.icon.fa-twitter(href=`https://twitter.com/${people[member.login].twitter}`)
 
-              span.label Twitter
+      if people[member.login] && people[member.login].twitter
+        li
+          a.icon.fa-twitter(href=`https://twitter.com/${people[member.login].twitter}`)
+            span.label Twitter
+
       li
         a.icon.fa-github(href=member.url, target='_blank')
           span.label Github

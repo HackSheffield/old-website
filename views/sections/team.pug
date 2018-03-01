@@ -1,11 +1,10 @@
 include ../_mixins
 
 section.wrapper.alt.style1
-  each team in teams
-    unless teamBlacklist.includes(team.name)
-      .inner
-        h2.major #{team.name}
-        section.special
-          .row
-            each member in team.members
-              +organiser(member)
+  each team in teams.filter(team => !teamBlacklist.includes(team.name))
+    .inner
+      h2.major #{team.name}
+      section.special
+        .row
+          each member in team.members
+            +organiser(member, team.name)
