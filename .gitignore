@@ -29,6 +29,11 @@ node_modules
 # Debug log from npm
 npm-debug.log
 
+# dotenv variables
+.env
+
+# MacOS Finder files
 .DS_Store
 
+# Build directory
 dist/
