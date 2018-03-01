@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
       const teamBlacklist = JSON.parse(files.blacklist.text);
       const teamOrder = JSON.parse(files.order.text);
 
-      const people = YAML.parse(files.people.text).map((people, person) => ({
+      const people = YAML.parse(files.people.text).map(person => ({
         [person.github]: person
       }));
 
