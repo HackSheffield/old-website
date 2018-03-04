@@ -1,6 +1,6 @@
 include ../_mixins
 
-section.wrapper.alt.style1.organisers
+section#team.wrapper.alt.style1.organisers
   each team in teams.filter(team => !teamBlacklist.includes(team.name))
     .inner
       h2.major #{team.name}
