@@ -1,0 +1,51 @@
+query {
+  organization(login: "hacksheffield") {
+    databaseId
+
+    files: repository(name: "people") {
+      people: object(expression: "master:_data/people.yml") {
+        ... on Blob {
+          text
+        }
+      }
+
+      blacklist: object(expression: "master:_config/team-blacklist.json") {
+        ... on Blob {
+          text
+        }
+      }
+
+      order: object(expression: "master:_config/committee-display-order.json") {
+        ... on Blob {
+          text
+        }
+      }
+    }
+
+    teams(first: 100) {
+      edges {
+        node {
+          name
+          members(first: 100) {
+            edges {
+              node {
+                name
+                url
+                login
+                email
+                avatarUrl
+                websiteUrl
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  rateLimit {
+    limit
+    cost
+    remaining
+    resetAt
+  }
+}

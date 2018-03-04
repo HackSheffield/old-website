@@ -1,32 +1,10 @@
-// Team Section
-section#team.wrapper.style1.alt
-  .inner
-    h2.major The HackSheffield Team
-    section.special
-      .row
-        for member in team
-          article(class='4u 12u(xsmall)')
-            img.image.fit(src=`images/team/${member.avatar}.jpg` alt='')
-            h3.major= member.name
-            span= member.role
-            ul.icons
-              - if ('email' in member.social)
-                li
-                  a.icon.fa-envelope(href=`mailto:${member.social.email}` target="_blank")
-                    span.label E-mail
-              - if ('website' in member.social)
-                li
-                  a.icon.fa-globe(href=member.social.website target="_blank")
-                    span.label Website
-              - if ('twitter' in member.social)
-                li
-                  a.icon.fa-twitter(href=`https://twitter.com/${member.social.twitter}`, target='_blank')
-                    span.label Twitter
-              - if ('github' in member.social)
-                li
-                  a.icon.fa-github(href=`https://github.com/${member.social.github}`, target='_blank')
-                    span.label GitHub
-              - if ('linkedin' in member.social)
-                li
-                  a.icon.fa-linkedin(href=`https://www.linkedin.com/in/${member.social.linkedin}/`, target='_blank')
-                    span.label LinkedIn
+include ../_mixins
+
+section.wrapper.alt.style1.organisers
+  each team in teams.filter(team => !teamBlacklist.includes(team.name))
+    .inner
+      h2.major #{team.name}
+      section.special
+        .row
+          each member in team.members
+            +organiser(member, team.name)

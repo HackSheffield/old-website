@@ -5,8 +5,15 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const postcssMiddleware = require('postcss-middleware');
+const dotenv = require('dotenv');
 
 const debug = require('debug')('hs:app');
+
+dotenv.config();
+
+if (!process.env.GITHUB_TOKEN) {
+  throw new Error('Supply GitHub token to start server');
+}
 
 const app = express();
 
