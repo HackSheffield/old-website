@@ -29,7 +29,7 @@ router.get('/', (req, res) => {
         [person.github]: person
       }), {});
 
-      teams.forEach(team => {
+      teams.map(team => {
         // unwrap node
         team.members = team.members.edges.map(edge => edge.node);
 
