@@ -37,3 +37,6 @@ npm-debug.log
 
 # Build directory
 dist/
+
+# Editor settings files
+.vscode/
