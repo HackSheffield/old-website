@@ -9,7 +9,7 @@ query {
         }
       }
 
-      blacklist: object(expression: "master:_config/team-blacklist.json") {
+      whitelist: object(expression: "master:_config/team-whitelist.json") {
         ... on Blob {
           text
         }
