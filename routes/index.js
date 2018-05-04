@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
       const files = graphqlRes.data.data.organization.files;
 
       const teams = org.teams.edges.map(edge => edge.node);
-      const teamBlacklist = JSON.parse(files.blacklist.text);
+      const teamWhitelist = JSON.parse(files.whitelist.text);
       const teamOrder = JSON.parse(files.order.text);
 
       const people = YAML.parse(files.people.text).reduce((people, person) => ({
@@ -57,7 +57,7 @@ router.get('/', (req, res) => {
       res.render('index', {
         title: 'Teams',
         teams,
-        teamBlacklist,
+        teamWhitelist,
         teamOrder
       });
     })
