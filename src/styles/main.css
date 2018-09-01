@@ -3656,41 +3656,6 @@ footer.wrapper .inner .copyright li a {
   }
 }
 
-a#mlh-trust-badge {
-  display: block;
-  max-width: 100px;
-  min-width: 60px;
-  position: fixed;
-  right: 20px;
-  top: 0;
-  width: 10%;
-  z-index: 10001;
-  border-bottom: 0px;
-}
-
-@media screen and (max-width: 980px) {
-  a#mlh-trust-badge {
-    right: 125px;
-  }
-}
-
-@media screen and (max-width: 736px) {
-  a#mlh-trust-badge {
-    right: 100px;
-  }
-}
-
-@media screen and (max-width: 640px) {
-  a#mlh-trust-badge {
-    right: 50px;
-  }
-}
-
-#mlh-badge-spacer {
-  visibility: hidden;
-  width: 125px;
-}
-
 .organisers h3 {
   overflow: hidden;
 
