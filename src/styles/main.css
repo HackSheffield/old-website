@@ -1739,6 +1739,10 @@ h6.major {
   border-bottom: solid 2px rgba(255, 255, 255, 0.125);
 }
 
+h1.huge {
+  font-size: 3em;
+}
+
 h2 {
   font-size: 1.2em;
 }
@@ -3661,4 +3665,10 @@ footer.wrapper .inner .copyright li a {
 
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+.binary {
+  text-align: center;
+  font-weight: lighter;
+  -webkit-background-clip: text;
 }

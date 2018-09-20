@@ -70,7 +70,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/qrcode', (req, res) => {
-  res.redirect('/');
+  res.render('qrcode');
 });
 
 module.exports = { router };
