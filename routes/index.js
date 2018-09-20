@@ -69,4 +69,8 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/qrcode', (req, res) => {
+  res.redirect('/');
+});
+
 module.exports = { router };
