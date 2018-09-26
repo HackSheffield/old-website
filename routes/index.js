@@ -73,4 +73,8 @@ router.get('/qrcode', (req, res) => {
   res.redirect('/');
 });
 
+router.get('/intro', (req, res) => {
+  res.redirect('https://facebook.com/events/317851682096310/');
+});
+
 module.exports = { router };
