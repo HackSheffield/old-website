@@ -73,8 +73,8 @@ router.get('/qrcode', (req, res) => {
   res.redirect('/');
 });
 
-router.get('/intro', (req, res) => {
-  res.redirect('https://facebook.com/events/317851682096310/');
+router.get('/slack', (req, res) => {
+  res.redirect('https://join.slack.com/t/hacksheffield/shared_invite/enQtNDQ3MjkyMTk5MjgzLThiYjFjYzUwMDMwZGUyYTFjNjUxMGVhMWRhYjI5ODk2MDUxNjU5YWIxNmNlOGJjODhiNWVkMGNhMjA5OTFmZDg');
 });
 
 module.exports = { router };
