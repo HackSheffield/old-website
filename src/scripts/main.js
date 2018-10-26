@@ -160,7 +160,7 @@
     $seconds = $('#seconds');
 
   function updateCountdown () {
-    var t = getTimeRemaining('27 Oct 2018 12:00:00 GMT')
+    var t = getTimeRemaining('27 Oct 2018 11:00:00 GMT')
     $days.text(('0' + t.days).slice(-2));
     $hours.text(('0' + t.hours).slice(-2));
     $minutes.text(('0' + t.minutes).slice(-2));
