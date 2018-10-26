@@ -153,6 +153,40 @@
     });
   });
 
+  // Parts of countdown.
+  var $days = $('#days'),
+    $hours = $('#hours'),
+    $minutes = $('#minutes'),
+    $seconds = $('#seconds');
+
+  function updateCountdown () {
+    var t = getTimeRemaining('27 Oct 2018 12:00:00 GMT')
+    $days.text(('0' + t.days).slice(-2));
+    $hours.text(('0' + t.hours).slice(-2));
+    $minutes.text(('0' + t.minutes).slice(-2));
+    $seconds.text(('0' + t.seconds).slice(-2));
+
+    if (t.total <= 0) {
+      clearInterval(countdownInterval);
+    }
+  };
+
+  // Start countdown and update every second.
+  updateCountdown();
+  var countdownInterval = setInterval(updateCountdown, 1000);
+
+  function getTimeRemaining (endtime) {
+    // Time from now until hacking starts.
+    var t = Date.parse(endtime) - Date.parse(new Date());
+    return {
+      total: t,
+      days: Math.floor(t / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((t / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((t / 1000 / 60) % 60),
+      seconds: Math.floor((t / 1000) % 60)
+    };
+  }
+
   var mobile = (/iphone|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
   if (mobile) {
     $('video.fullscreen').css('display', 'none'); // OR you can use $('.navWrap').hide();

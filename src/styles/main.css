@@ -3662,3 +3662,17 @@ footer.wrapper .inner .copyright li a {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
+#countdown {
+  padding: 2em 0 3em 0;
+}
+
+#countdown .time {
+  margin-top: -1em;
+}
+
+.countdown {
+  font-family: Raleway, Helvetica, sans-serif;
+  font-size: 3em;
+  font-weight: bold;
+}
