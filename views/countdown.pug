@@ -1,0 +1,21 @@
+doctype html
+// Website maintained by HackSheffield Society at the University of Sheffield.
+html
+  head
+    title
+      block title
+        | HackSheffield
+
+    include ./components/meta
+
+  body(style='background: #04a8f3')
+    // Page Wrapper
+    #page-wrapper
+
+      // Wrapper
+      section#wrapper
+        section#flat-top.wrapper.style1.spotlight
+        include ./sections/countdown
+        section.wrapper.style3
+
+    include ./components/scripts

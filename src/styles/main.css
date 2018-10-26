@@ -3676,3 +3676,12 @@ footer.wrapper .inner .copyright li a {
   font-size: 3em;
   font-weight: bold;
 }
+
+#flat-top {
+  margin: 0;
+  padding: 3em;
+}
+
+#flat-top::before {
+  display: none;
+}
