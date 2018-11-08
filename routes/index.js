@@ -69,10 +69,6 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/countdown', (req, res) => {
-  res.render('countdown');
-});
-
 router.get('/qrcode', (req, res) => {
   res.redirect('/');
 });
